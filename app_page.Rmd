@@ -1,5 +1,5 @@
 ---
-title: "app_page"
+title: "Beer Case Study App"
 author: "Ahmed Awadallah"
 date: "1/16/2022"
 output: html_document
@@ -9,22 +9,30 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+# Beer Case Study Rshiny App
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Summary
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+This app allows you to play with US brewery data. It allows the user to see boxplots, histograms, and scatter plots of all the data or by state.
 
-```{r cars}
-summary(cars)
-```
+### [Link To Site](https://ahmedawadallah.shinyapps.io/rshinyapp/)
 
-## Including Plots
+### User Guide
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+* Histogram Bin Slider
+  + This allows the user to select how much data per Bin
+  + Limited from 1 to 50 bins
+  + Only interacts with histogram plots
+* Data Selection
+  + This allows the user to select what current data setup is being analyzed
+  + ABV/IBU displays histograms by default
+  + IBU v ABV displays scatter plot by default
+* State Selection
+  + This allows the user to select data that either pertains to the whole data set (Selecting ALL) or a specific state
+  + Includes all 50 US states and Washington D.C.
+* Plot Selection
+  + Only works when the data is ABV or IBU
+  + Allows the user to select either histograms or boxplots
+* Overlay Linear Model
+  + Only works when the data is IBU v ABV
+  + Allows user to display a linear model on IBU v ABV scatter plots

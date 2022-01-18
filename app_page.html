@@ -12,7 +12,7 @@
 <meta name="author" content="Ahmed Awadallah" />
 
 
-<title>app_page</title>
+<title>Beer Case Study App</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -263,40 +263,54 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">app_page</h1>
+<h1 class="title toc-ignore">Beer Case Study App</h1>
 <h4 class="author">Ahmed Awadallah</h4>
 <h4 class="date">1/16/2022</h4>
 
 </div>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##     Model                MPG          Cylinders      Displacement     Horsepower        Weight      Acceleration  
-##  Length:394         Min.   : 9.00   Min.   :3.000   Min.   : 68.0   Min.   : 46.0   Min.   :1613   Min.   : 8.00  
-##  Class :character   1st Qu.:17.12   1st Qu.:4.000   1st Qu.:105.0   1st Qu.: 75.0   1st Qu.:2226   1st Qu.:13.80  
-##  Mode  :character   Median :23.00   Median :4.000   Median :151.0   Median : 93.5   Median :2804   Median :15.50  
-##                     Mean   :23.47   Mean   :5.464   Mean   :194.1   Mean   :104.5   Mean   :2976   Mean   :15.55  
-##                     3rd Qu.:29.00   3rd Qu.:8.000   3rd Qu.:265.8   3rd Qu.:126.0   3rd Qu.:3612   3rd Qu.:17.07  
-##                     Max.   :46.60   Max.   :8.000   Max.   :455.0   Max.   :230.0   Max.   :5140   Max.   :24.80  
-##                                                                     NA&#39;s   :2                                     
-##       Year          Origin         
-##  Min.   :70.00   Length:394        
-##  1st Qu.:73.00   Class :character  
-##  Median :76.00   Mode  :character  
-##  Mean   :76.01                     
-##  3rd Qu.:79.00                     
-##  Max.   :82.00                     
-## </code></pre>
+<div id="beer-case-study-rshiny-app" class="section level1">
+<h1>Beer Case Study Rshiny App</h1>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<p>This app allows you to play with US brewery data. It allows the user to see boxplots, histograms, and scatter plots of all the data or by state.</p>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="app_page_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="link-to-site" class="section level3">
+<h3><a href="https://ahmedawadallah.shinyapps.io/rshinyapp/">Link To Site</a></h3>
+</div>
+<div id="user-guide" class="section level3">
+<h3>User Guide</h3>
+<ul>
+<li>Histogram Bin Slider
+<ul>
+<li>This allows the user to select how much data per Bin</li>
+<li>Limited from 1 to 50 bins</li>
+<li>Only interacts with histogram plots</li>
+</ul></li>
+<li>Data Selection
+<ul>
+<li>This allows the user to select what current data setup is being analyzed</li>
+<li>ABV/IBU displays histograms by default</li>
+<li>IBU v ABV displays scatter plot by default</li>
+</ul></li>
+<li>State Selection
+<ul>
+<li>This allows the user to select data that either pertains to the whole data set (Selecting ALL) or a specific state</li>
+<li>Includes all 50 US states and Washington D.C.</li>
+</ul></li>
+<li>Plot Selection
+<ul>
+<li>Only works when the data is ABV or IBU</li>
+<li>Allows the user to select either histograms or boxplots</li>
+</ul></li>
+<li>Overlay Linear Model
+<ul>
+<li>Only works when the data is IBU v ABV</li>
+<li>Allows user to display a linear model on IBU v ABV scatter plots</li>
+</ul></li>
+</ul>
+</div>
 </div>
 
 

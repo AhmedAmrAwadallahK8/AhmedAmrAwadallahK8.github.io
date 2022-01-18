@@ -1,0 +1,11 @@
+name: rshinyapp
+title:
+username:
+account: ahmedawadallah
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5459489
+bundleId: 5479930
+url: https://ahmedawadallah.shinyapps.io/rshinyapp/
+when: 1642489051.86102
+lastSyncTime: 1642489051.86102
