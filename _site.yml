@@ -8,3 +8,5 @@ navbar:
       href: case_study_01.html
     - text: "Beer Study App"
       href: app_page.html
+    - text: "Employee Study"
+      href: CaseStudy2_with_code.html

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Ahmed Awadallah" />
+
+
+<title>Case Study 2</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="case_study_01.html">Beer Study</a>
+</li>
+<li>
+  <a href="app_page.html">Beer Study App</a>
+</li>
+<li>
+  <a href="CaseStudy2_with_code.html">Employee Study</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Case Study 2</h1>
+<h4 class="author">Ahmed Awadallah</h4>
+<h4 class="date">1/31/2022</h4>
+
+</div>
+
+
+<div id="executive-summary-and-introduction" class="section level2">
+<h2>Executive Summary and Introduction</h2>
+<p>This is an R Markdown document detailing an in depth analysis on the employee data set. The employee dataset was explored in order to provide the requested key insights on attrition and job role trends. Additionally, I provide some interesting trends I found along the way. Lastly models were generated in order to predict salary as well as likelihood of attrition.</p>
+</div>
+<div id="top-3-contributors-to-attrition" class="section level2">
+<h2>Top 3 Contributors to Attrition</h2>
+<div id="age" class="section level4">
+<h4>Age</h4>
+<pre class="r"><code>df_raw %&gt;% ggplot(aes(y = Attrition, x = Age, fill = Attrition)) + geom_boxplot() + 
+  ggtitle(&quot;Attrition v Age Boxplots&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/age-1.png" width="672" /></p>
+<pre class="r"><code>df_raw %&gt;% ggplot(aes(x = Age, fill = Attrition)) + geom_density(alpha=0.5) + 
+  ggtitle(&quot;Attrition v Age Density Plots&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/age-2.png" width="672" /></p>
+<p>This data provides overwhelming evidence that the mean age of those who leave the company versus those who stay are different.(P = 5.05E-05) We are 95% confident that those who stay are between 1.9 to 5.35 years older than those who leave.</p>
+</div>
+<div id="monthly-income" class="section level4">
+<h4>Monthly Income</h4>
+<pre class="r"><code>df_raw %&gt;% ggplot(aes(y = Attrition, x = MonthlyIncome, fill=Attrition)) + geom_boxplot() + 
+  ggtitle(&quot;Attrition v MonthlyIncome Boxplots&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/monthlyincome-1.png" width="672" /></p>
+<pre class="r"><code>df_raw %&gt;% ggplot(aes(x = MonthlyIncome, fill = Attrition)) + geom_density(alpha=0.5) + 
+  ggtitle(&quot;Attrition v MonthlyIncome Density Plots&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/monthlyincome-2.png" width="672" /></p>
+<p>This data provides overwhelming evidence that the mean monthly income of those who leave the company versus those who stay are different. (P = 2.412E-07) We are 95% confident that those who stay have a monthly income that is 1220USD to 2654USD larger than those who leave.</p>
+</div>
+<div id="overtime" class="section level4">
+<h4>Overtime</h4>
+<pre class="r"><code>df_raw %&gt;% ggplot(aes(x = Attrition, fill = OverTime)) + geom_bar(position=&quot;fill&quot;) + 
+  ggtitle(&quot;Attrition v OverTime Barplot&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/overtime-1.png" width="672" /></p>
+<p>This data provides overwhelming evidence that these two variables are dependent. (P = 2.333E-15)</p>
+</div>
+</div>
+<div id="interesting-job-role-specific-trends" class="section level2">
+<h2>Interesting Job Role Specific Trends</h2>
+<div id="job-role-and-age" class="section level4">
+<h4>Job Role and Age</h4>
+<pre class="r"><code>#JR v Age
+df_raw %&gt;% ggplot(aes(y = reorder(JobRole, Age), x = Age)) + geom_boxplot(fill = &quot;Cornflower blue&quot;) + 
+  ggtitle(&quot;Job Role v Age Boxplots&quot;) + ylab(&quot;Job Role&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/JRvAge-1.png" width="672" /></p>
+</div>
+<div id="job-role-and-education" class="section level4">
+<h4>Job Role and Education</h4>
+<pre class="r"><code>#JR v Education
+df_raw %&gt;% group_by(JobRole) %&gt;%
+  summarise_at(vars(Education), list(EducationMean = mean)) %&gt;%
+  ggplot(aes(y = reorder(JobRole, EducationMean), x = EducationMean)) + geom_col(fill = &quot;Cornflower blue&quot;) + 
+  ggtitle(&quot;Job Role v Mean Education Score Column Plot&quot;) + xlab(&quot;Education Score Mean&quot;) + ylab(&quot;Job Role&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/JRvEduc-1.png" width="672" /></p>
+</div>
+<div id="job-role-and-education-field" class="section level4">
+<h4>Job Role and Education Field</h4>
+<pre class="r"><code>#JR v Education Field
+df_raw %&gt;% ggplot(aes(y = JobRole, fill = as.factor(EducationField))) + geom_bar(position=&quot;fill&quot;) + 
+  ggtitle(&quot;Job Role v Education Field Barplot&quot;) + xlab(&quot;Count&quot;) + ylab(&quot;Job Role&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/JRvEF-1.png" width="672" /></p>
+</div>
+<div id="job-role-and-monthly-income" class="section level4">
+<h4>Job Role and Monthly Income</h4>
+<pre class="r"><code>#MonthlyIncome
+df_raw %&gt;% ggplot(aes(y = reorder(JobRole, MonthlyIncome), x = MonthlyIncome)) + 
+  geom_boxplot(fill = &quot;Cornflower blue&quot;) + ggtitle(&quot;Job Level v Monthly Income Boxplots&quot;) + 
+  ylab(&quot;Job Role&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/JRvMI-1.png" width="672" /></p>
+</div>
+</div>
+<div id="bonus-analysis" class="section level2">
+<h2>Bonus Analysis</h2>
+<div id="department-and-monthlyincome" class="section level4">
+<h4>Department and MonthlyIncome</h4>
+<pre class="r"><code>#Dep v MonthlyIncome
+df_raw %&gt;% ggplot(aes(y = Department, x = MonthlyIncome)) + geom_boxplot(fill = &quot;Cornflower blue&quot;) + 
+  ggtitle(&quot;Department v MonthlyIncome Boxplots&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/bonus1-1.png" width="672" /></p>
+<pre class="r"><code>df_raw %&gt;% ggplot(aes(x = MonthlyIncome, fill = Department)) + geom_density() + 
+  facet_wrap(~Department) + ggtitle(&quot;Department v MonthlyIncome Density Plots&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/bonus1-2.png" width="672" /></p>
+</div>
+<div id="monthlyincome-and-years-at-company" class="section level4">
+<h4>MonthlyIncome and Years at Company</h4>
+<pre class="r"><code>#Years at company v Income
+df_raw %&gt;% ggplot(aes(y = MonthlyIncome, x = YearsAtCompany)) + geom_point() + 
+  geom_smooth(formula = &#39;y~x&#39;, method = lm) + 
+  ggtitle(&quot;MonthlyIncome v YearsAtCompany&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/bonus2-1.png" width="672" /></p>
+<p>There is overwhelming evidence of a positive linear relationship between monthly income and years at the company.(P &lt; 2E-16). We are 95% confident that for every year at the company the increase in monthly income is somewhere between 330USD to 419USD.</p>
+<p>Take note on this plot that there are people who barely began working at the company yet started at a large income.</p>
+</div>
+<div id="monthlyincome-and-total-years-working" class="section level4">
+<h4>MonthlyIncome and Total Years Working</h4>
+<pre class="r"><code>#Total Working Years v Income
+df_raw %&gt;% ggplot(aes(y = MonthlyIncome, x = TotalWorkingYears)) + geom_point()  + 
+  geom_smooth(formula = &#39;y~x&#39;, method = lm) +
+  ggtitle(&quot;MonthlyIncome v TotalWorkingYears&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/bonus3-1.png" width="672" /></p>
+<p>There is overwhelming evidence of a positive linear relationship between monthly income and total working years.(P &lt; 2E-16). We are 95% confident that for every year working the increase in monthly income is somewhere between 450USD to 501USD.</p>
+<p>Take not now on this plot how at the start of a career the Income is low for all.</p>
+<p>Both relationships increase per year but total working is 26% more per year.</p>
+<p>This seems to indicate that if employees want to increase their own income at a faster rate they are better off leaving the company.</p>
+</div>
+</div>
+<div id="attrition-prediction-model" class="section level2">
+<h2>Attrition Prediction Model</h2>
+<pre class="r"><code>df_model = df_raw %&gt;% select(&quot;Age&quot;, &quot;MonthlyIncome&quot;, &quot;OverTime&quot;, &quot;TotalWorkingYears&quot;, &quot;JobLevel&quot;, &quot;Attrition&quot;,
+                             &quot;StockOptionLevel&quot;, &quot;DistanceFromHome&quot;, &quot;EnvironmentSatisfaction&quot;, &quot;MaritalStatus&quot;)
+
+#Adjust OverTime such that its a dummy
+df_model$OverTime_Yes = ifelse(df_model$OverTime == &quot;Yes&quot;, 1, 0)
+df_model$OverTime_No = ifelse(df_model$OverTime == &quot;No&quot;, 1, 0)
+
+#Adjust MaritalStatus
+df_model$MS_Single = ifelse(df_model$MaritalStatus == &quot;Single&quot;, 1, 0)
+df_model$MS_Divorced = ifelse(df_model$MaritalStatus == &quot;Divorced&quot;, 1, 0)
+df_model$MS_Married = ifelse(df_model$MaritalStatus == &quot;Married&quot;, 1, 0)
+
+
+#Normalize the other variables
+df_model$Age_Norm = (df_model$Age  - mean(df_model$Age))/sd(df_model$Age)
+df_model$MonthlyIncome_Norm = (df_model$MonthlyIncome  - mean(df_model$MonthlyIncome))/sd(df_model$MonthlyIncome)
+df_model$TotalWorkingYears_Norm = (df_model$TotalWorkingYears  - mean(df_model$TotalWorkingYears))/sd(df_model$TotalWorkingYears)
+df_model$JobLevel_Norm = (df_model$JobLevel  - mean(df_model$JobLevel))/sd(df_model$JobLevel)
+
+df_model$StockOptionLevel_Norm = (df_model$StockOptionLevel  - mean(df_model$StockOptionLevel))/sd(df_model$StockOptionLevel)
+df_model$DistanceFromHome_Norm = (df_model$DistanceFromHome  - mean(df_model$DistanceFromHome))/sd(df_model$DistanceFromHome)
+df_model$EnvironmentSatisfaction_Norm = (df_model$EnvironmentSatisfaction  - mean(df_model$EnvironmentSatisfaction))/sd(df_model$EnvironmentSatisfaction)
+
+#Setup Final Data State
+df_model_final = df_model %&gt;% select(&quot;Age_Norm&quot;, &quot;MonthlyIncome_Norm&quot;, &quot;TotalWorkingYears_Norm&quot;, 
+                                     &quot;JobLevel_Norm&quot;, &quot;OverTime_Yes&quot;, &quot;OverTime_No&quot;,
+                                     &quot;StockOptionLevel_Norm&quot;, &quot;DistanceFromHome_Norm&quot;, &quot;EnvironmentSatisfaction_Norm&quot;,
+                                     &quot;MS_Single&quot;, &quot;MS_Divorced&quot;, &quot;MS_Married&quot;, &quot;Attrition&quot;)
+
+df_model_final %&gt;% ggplot(aes(x=Attrition)) + geom_bar(fill = &quot;Cornflower blue&quot;) + ggtitle(&quot;Attrition Bar Plot&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/setup_attrition-1.png" width="672" /></p>
+<div id="knn-performance" class="section level4">
+<h4>KNN Performance</h4>
+<pre class="r"><code>#Split into Train/Validation set and test set 60 20 20 split
+tt_l = train_test_split(df_model_final, splitPerc = 0.9)
+
+train_data = tt_l[[1]]
+test_data = tt_l[[2]]
+
+
+#Specify Features and Target
+fea = c(&quot;Age_Norm&quot;, &quot;MonthlyIncome_Norm&quot;, &quot;TotalWorkingYears_Norm&quot;, 
+        &quot;JobLevel_Norm&quot;, &quot;OverTime_Yes&quot;, &quot;OverTime_No&quot;,
+        &quot;StockOptionLevel_Norm&quot;, &quot;DistanceFromHome_Norm&quot;, &quot;EnvironmentSatisfaction_Norm&quot;,
+        &quot;MS_Single&quot;)
+
+tar = c(&quot;Attrition&quot;)
+
+#Set Hyperparameter
+perc_downsample = 0.8
+rep_upsample = 4
+optimal_k = 34
+
+#UpSampling and DownSampling
+minority_target = train_data %&gt;% filter(Attrition == &quot;Yes&quot;)
+majority_target = train_data %&gt;% filter(Attrition == &quot;No&quot;)
+trainIndices = sample(1:dim(majority_target)[1], round(perc_downsample * dim(majority_target)[1]))
+train_data2 = majority_target[trainIndices,]
+for(l in 1:rep_upsample){
+  train_data2 = rbind(train_data2, minority_target)
+}
+
+#Setup train and test data
+train_fea = train_data2 %&gt;% select(contains(fea))
+train_tar = train_data2 %&gt;% select(contains(tar))
+test_fea = test_data %&gt;% select(contains(fea))
+test_tar = test_data %&gt;% select(contains(tar))
+
+#Evaluate KNN Model
+clsf_rep = knn(train_fea[,], test_fea[,], train_tar[,], k=optimal_k, prob = T)
+CM_rep = confusionMatrix(table(clsf_rep, test_tar[,]))
+CM_rep</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##         
+## clsf_rep No Yes
+##      No  69   3
+##      Yes 11   4
+##                                           
+##                Accuracy : 0.8391          
+##                  95% CI : (0.7448, 0.9091)
+##     No Information Rate : 0.9195          
+##     P-Value [Acc &gt; NIR] : 0.99613         
+##                                           
+##                   Kappa : 0.2852          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.06137         
+##                                           
+##             Sensitivity : 0.8625          
+##             Specificity : 0.5714          
+##          Pos Pred Value : 0.9583          
+##          Neg Pred Value : 0.2667          
+##              Prevalence : 0.9195          
+##          Detection Rate : 0.7931          
+##    Detection Prevalence : 0.8276          
+##       Balanced Accuracy : 0.7170          
+##                                           
+##        &#39;Positive&#39; Class : No              
+## </code></pre>
+</div>
+<div id="forest-performance" class="section level4">
+<h4>Forest Performance</h4>
+<pre class="r"><code>#Split into Train/Validation set and test set 60 20 20 split
+tt_l = train_test_split(df_model_final, splitPerc = 0.9)
+
+train_data = tt_l[[1]]
+test_data = tt_l[[2]]
+
+#Specify Features and Target
+fea = c(&quot;Age_Norm&quot;, &quot;MonthlyIncome_Norm&quot;, &quot;TotalWorkingYears_Norm&quot;, 
+        &quot;JobLevel_Norm&quot;, &quot;OverTime_Yes&quot;, &quot;OverTime_No&quot;,
+        &quot;StockOptionLevel_Norm&quot;, &quot;DistanceFromHome_Norm&quot;, &quot;EnvironmentSatisfaction_Norm&quot;,
+        &quot;MS_Single&quot;)
+
+tar = c(&quot;Attrition&quot;)
+
+#Set Hyperparameters
+perc_downsample = 0.7
+rep_upsample = 4
+optimal_d = 9
+
+#UpSampling and DownSampling
+minority_target = train_data %&gt;% filter(Attrition == &quot;Yes&quot;)
+majority_target = train_data %&gt;% filter(Attrition == &quot;No&quot;)
+trainIndices = sample(1:dim(majority_target)[1], round(perc_downsample * dim(majority_target)[1]))
+train_data3 = majority_target[trainIndices,]
+for(l in 1:rep_upsample){
+  train_data3 = rbind(train_data3, minority_target)
+}
+
+#Setup train and test data
+train_fea = train_data3 %&gt;% select(contains(fea))
+train_tar = train_data3 %&gt;% select(contains(tar))
+test_fea = test_data %&gt;% select(contains(fea))
+test_tar = test_data %&gt;% select(contains(tar))
+
+#Build Final Model
+forest = randomForest(x=train_fea, y=as.factor(train_tar$Attrition),
+                      ntree = 1000, maxnodes = optimal_d)
+
+#Evaluate Final Model
+pred_forest = predict(forest, test_fea)
+CM_rep = confusionMatrix(table(pred_forest, test_tar[,]))
+CM_rep</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##            
+## pred_forest No Yes
+##         No  64   7
+##         Yes 10   6
+##                                           
+##                Accuracy : 0.8046          
+##                  95% CI : (0.7057, 0.8819)
+##     No Information Rate : 0.8506          
+##     P-Value [Acc &gt; NIR] : 0.9083          
+##                                           
+##                   Kappa : 0.2981          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.6276          
+##                                           
+##             Sensitivity : 0.8649          
+##             Specificity : 0.4615          
+##          Pos Pred Value : 0.9014          
+##          Neg Pred Value : 0.3750          
+##              Prevalence : 0.8506          
+##          Detection Rate : 0.7356          
+##    Detection Prevalence : 0.8161          
+##       Balanced Accuracy : 0.6632          
+##                                           
+##        &#39;Positive&#39; Class : No              
+## </code></pre>
+</div>
+</div>
+<div id="monthly-income-prediction-model" class="section level2">
+<h2>Monthly Income Prediction Model</h2>
+<pre class="r"><code>#Setup DF
+MI_model = df_raw
+MI_model$JobLevelFac = as.factor(df_raw$JobLevel)
+
+#Specify Features and Target
+fea = c(&quot;TotalWorkingYears&quot;, &quot;JobLevelFac&quot;)
+tar = c(&quot;MonthlyIncome&quot;)
+
+#Setup Data
+train = MI_model %&gt;% select(contains(fea), contains(tar))
+train_fea = MI_model %&gt;% select(contains(fea))
+train_tar = MI_model %&gt;% select(contains(tar))
+
+#Model
+fit = lm(MonthlyIncome~TotalWorkingYears+JobLevelFac, data=train)
+
+#Equations for plot
+equation1=function(x){coef(fit)[2]*x+coef(fit)[1]}
+equation2=function(x){(coef(fit)[2])*x+coef(fit)[1]+coef(fit)[3]}
+equation3=function(x){(coef(fit)[2])*x+coef(fit)[1]+coef(fit)[4]}
+equation4=function(x){(coef(fit)[2])*x+coef(fit)[1]+coef(fit)[5]}
+equation5=function(x){(coef(fit)[2])*x+coef(fit)[1]+coef(fit)[6]}
+
+#Plot
+train %&gt;% ggplot(aes(y=MonthlyIncome,x=TotalWorkingYears,color=JobLevelFac))+geom_point()+
+  stat_function(fun=equation1,geom=&quot;line&quot;,color=scales::hue_pal()(5)[1])+
+  stat_function(fun=equation2,geom=&quot;line&quot;,color=scales::hue_pal()(5)[2]) + 
+  stat_function(fun=equation3,geom=&quot;line&quot;,color=scales::hue_pal()(5)[3]) +
+  stat_function(fun=equation4,geom=&quot;line&quot;,color=scales::hue_pal()(5)[4]) +
+  stat_function(fun=equation5,geom=&quot;line&quot;,color=scales::hue_pal()(5)[5]) +
+  ggtitle(&quot;MonthlyIncome Model&quot;)</code></pre>
+<p><img src="CaseStudy2_with_code_files/figure-html/MI_model-1.png" width="672" /></p>
+<p>Average RMSE of this model on the test set was 1257.59.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
